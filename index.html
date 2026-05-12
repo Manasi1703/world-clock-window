@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>World Clock Windows</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell" aria-label="World Clock">
+      <section class="clock-app">
+        <header class="status-bar" aria-label="Device status">
+          <time id="localStatusTime">6:45</time>
+          <div class="status-icons" aria-hidden="true">
+            <span class="cell-bars"><i></i><i></i><i></i></span>
+            <span class="wifi-icon"></span>
+            <span class="battery-icon"></span>
+          </div>
+        </header>
+
+        <nav class="top-actions" aria-label="Clock actions">
+          <button class="pill-button" type="button">Edit</button>
+          <div class="action-cluster">
+            <button
+              id="windowModeBtn"
+              class="circle-button window-toggle"
+              type="button"
+              aria-label="Switch to window grid"
+              aria-pressed="false"
+            >
+              <span class="window-glyph" aria-hidden="true">
+                <i></i><i></i><i></i><i></i>
+              </span>
+            </button>
+            <button id="addBtn" class="circle-button plus-button" type="button" aria-label="Add city">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+
+        <div class="title-row">
+          <h1>World Clock</h1>
+        </div>
+
+        <section id="clockList" class="clock-list" aria-label="World clock list"></section>
+
+        <section id="windowGrid" class="window-grid" aria-label="World clock windows"></section>
+
+        <aside id="addSheet" class="add-sheet" aria-hidden="true" aria-label="Add city panel">
+            <div class="sheet-card">
+            <div class="sheet-handle" aria-hidden="true"></div>
+            <h2>City windows</h2>
+            <div id="cityChoices" class="city-choices"></div>
+            <button id="closeSheet" class="sheet-close" type="button">Done</button>
+          </div>
+        </aside>
+
+        <footer class="tab-bar" aria-label="Clock tabs">
+          <button class="tab-item active" type="button">
+            <span class="tab-icon globe" aria-hidden="true"></span>
+            <span>World Clock</span>
+          </button>
+          <button class="tab-item" type="button">
+            <span class="tab-icon alarm" aria-hidden="true"></span>
+            <span>Alarms</span>
+          </button>
+          <button class="tab-item" type="button">
+            <span class="tab-icon stopwatch" aria-hidden="true"></span>
+            <span>Stopwatch</span>
+          </button>
+          <button class="tab-item" type="button">
+            <span class="tab-icon timer" aria-hidden="true"></span>
+            <span>Timers</span>
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
