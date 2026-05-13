@@ -40,6 +40,7 @@ body {
 
 button {
   border: 0;
+  background: transparent;
   color: inherit;
   font: inherit;
 }
@@ -174,42 +175,40 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 22px;
+  min-height: 34px;
+  padding-bottom: 12px;
 }
 
 .pill-button,
 .circle-button {
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(#1b1b1d, #151515);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  color: var(--gold);
+  cursor: pointer;
 }
 
 .pill-button {
-  min-width: 74px;
-  height: 50px;
-  padding: 0 18px;
-  border-radius: 26px;
-  font-size: 22px;
-  font-weight: 600;
+  min-width: 0;
+  height: 34px;
+  padding: 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .action-cluster {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 13px;
 }
 
 .circle-button {
-  width: 54px;
-  height: 54px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  cursor: pointer;
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .circle-button:active {
@@ -217,35 +216,31 @@ button {
 }
 
 .window-toggle[aria-pressed="true"] {
-  border-color: rgba(241, 182, 97, 0.55);
-  background: linear-gradient(145deg, rgba(241, 182, 97, 0.32), #1c1711);
-  color: var(--gold);
+  color: #fff;
 }
 
 .window-glyph {
   display: grid;
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3px;
+  gap: 4px;
   padding: 3px;
-  border: 2px solid currentColor;
-  border-radius: 4px 4px 7px 7px;
 }
 
 .window-glyph i {
   background: currentColor;
-  border-radius: 1px;
+  border-radius: 3px;
 }
 
 .plus-button span,
 .plus-button span::after {
   display: block;
-  width: 29px;
-  height: 4px;
+  width: 23px;
+  height: 2px;
   content: "";
   border-radius: 999px;
-  background: #fff;
+  background: currentColor;
 }
 
 .plus-button span::after {
@@ -263,7 +258,7 @@ button {
   align-items: end;
   justify-content: flex-start;
   border-bottom: 1px solid var(--line);
-  padding-bottom: 14px;
+  padding-bottom: 10px;
 }
 
 h1,
@@ -273,44 +268,48 @@ p {
 }
 
 h1 {
-  font-size: clamp(32px, 15vw, 32px);
-  font-weight: 640;
+  font-size: 34px;
+  font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.96;
+  line-height: 1.06;
 }
 
 .clock-list {
   display: grid;
-  padding-top: 14px;
+  padding-top: 1px;
 }
 
 .city-row {
   display: grid;
-  min-height: 119px;
+  min-height: 91px;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   border-bottom: 1px solid var(--line);
 }
 
 .city-meta {
   display: grid;
-  gap: 5px;
+  gap: 1px;
   min-width: 0;
+  overflow: hidden;
 }
 
 .date-offset {
+  overflow: hidden;
   color: var(--muted);
-  font-size: 22px;
-  font-weight: 590;
-  line-height: 1;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .city-name {
   overflow: hidden;
-  font-size: 32px;
-  font-weight: 410;
-  line-height: 1.1;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.08;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -319,21 +318,22 @@ h1 {
   display: flex;
   align-items: baseline;
   justify-content: end;
-  min-width: 148px;
+  min-width: 146px;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .time-main {
-  font-size: clamp(62px, 22vw, 76px);
-  font-weight: 235;
-  line-height: 0.94;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 0.95;
 }
 
 .time-period {
-  margin-left: 2px;
-  font-size: 33px;
-  font-weight: 520;
+  margin-left: 1px;
+  font-size: 22px;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -600,29 +600,39 @@ h1 {
 .window-label {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 6px;
-  align-items: end;
+  gap: 1px 6px;
+  align-items: center;
   min-height: 52px;
 }
 
 .window-label strong {
   overflow: hidden;
-  font-size: 18px;
+  align-self: center;
+  font-size: 16px;
   font-weight: 720;
   line-height: 1.05;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.window-label span {
+.window-date {
+  display: block;
+  overflow: hidden;
+  grid-column: 1;
+  grid-row: 2;
   color: var(--muted);
   font-size: 12px;
   font-weight: 650;
   line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .window-label time {
   color: #fff;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   font-size: 22px;
   font-variant-numeric: tabular-nums;
   font-weight: 680;
@@ -712,8 +722,9 @@ h1 {
   gap: 12px;
   min-height: 54px;
   padding: 8px 12px 8px 8px;
-  border-radius: 18px;
-  background: #242426;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
   text-align: left;
   cursor: pointer;
 }
@@ -742,48 +753,45 @@ h1 {
   color: var(--gold);
   font-size: 13px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .sheet-close {
-  height: 48px;
-  border-radius: 18px;
-  background: var(--gold);
-  color: #201407;
+  justify-self: end;
+  height: 34px;
+  padding: 0;
+  background: transparent;
+  color: var(--gold);
   cursor: pointer;
-  font-weight: 760;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .tab-bar {
   position: absolute;
   z-index: 10;
-  left: 20px;
-  right: 20px;
-  bottom: 23px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 2px;
-  min-height: 77px;
-  padding: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 40px;
-  background: rgba(26, 26, 27, 0.94);
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.34),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  min-height: calc(83px + env(safe-area-inset-bottom));
+  padding: 7px 6px calc(24px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(20, 20, 21, 0.96);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 
 .tab-item {
   display: grid;
   place-items: center;
   align-content: center;
-  gap: 5px;
+  gap: 4px;
   min-width: 0;
-  border-radius: 34px;
   background: transparent;
-  color: #f5f5f6;
-  font-size: 12px;
-  font-weight: 700;
+  color: #8e8e93;
+  font-size: 10px;
+  font-weight: 500;
   line-height: 1;
 }
 
@@ -795,7 +803,6 @@ h1 {
 }
 
 .tab-item.active {
-  background: #3a3a3b;
   color: var(--gold);
 }
 
@@ -971,15 +978,23 @@ h1 {
   }
 
   .date-offset {
-    font-size: 20px;
+    font-size: 13px;
   }
 
   .city-name {
-    font-size: 32px;
+    font-size: 28px;
+  }
+
+  .city-time {
+    min-width: 140px;
   }
 
   .time-main {
-    font-size: 61px;
+    font-size: 54px;
+  }
+
+  .time-period {
+    font-size: 21px;
   }
 
   .window-grid {
@@ -1007,54 +1022,54 @@ h1 {
   }
 
   .top-actions {
-    padding-bottom: 16px;
+    padding-bottom: 12px;
   }
 
   .pill-button {
-    min-width: 68px;
-    height: 44px;
-    font-size: 20px;
+    min-width: 0;
+    height: 34px;
+    font-size: 17px;
   }
 
   .circle-button {
-    width: 48px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
   }
 
   h1 {
-    font-size: clamp(43px, 12.4vw, 49px);
+    font-size: 34px;
   }
 
   .title-row {
-    padding-bottom: 11px;
+    padding-bottom: 10px;
   }
 
   .clock-list {
-    padding-top: 9px;
+    padding-top: 1px;
   }
 
   .city-row {
-    min-height: 108px;
+    min-height: 91px;
   }
 
   .date-offset {
-    font-size: 19px;
+    font-size: 13px;
   }
 
   .city-name {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .city-time {
-    min-width: 136px;
+    min-width: 140px;
   }
 
   .time-main {
-    font-size: 58px;
+    font-size: 54px;
   }
 
   .time-period {
-    font-size: 29px;
+    font-size: 21px;
   }
 
   .window-grid {
@@ -1100,7 +1115,7 @@ h1 {
     font-size: 16px;
   }
 
-  .window-label span {
+  .window-date {
     font-size: 11px;
   }
 
@@ -1113,19 +1128,88 @@ h1 {
   }
 
   .tab-bar {
-    left: 14px;
-    right: 14px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    min-height: 68px;
-    padding: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: calc(83px + env(safe-area-inset-bottom));
+    padding: 7px 6px calc(24px + env(safe-area-inset-bottom));
   }
 
   .tab-item {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .tab-icon {
     width: 22px;
     height: 22px;
+  }
+}
+
+@media (max-width: 330px) {
+  .city-row {
+    min-height: 74px;
+    gap: 7px;
+  }
+
+  .date-offset {
+    font-size: 12px;
+  }
+
+  .city-name {
+    font-size: 23px;
+  }
+
+  .city-time {
+    min-width: 112px;
+  }
+
+  .time-main {
+    font-size: 44px;
+  }
+
+  .time-period {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 260px) {
+  .clock-app {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .city-row {
+    min-height: 44px;
+    gap: 5px;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .city-meta {
+    gap: 0;
+  }
+
+  .date-offset {
+    font-size: 10px;
+    line-height: 1.05;
+  }
+
+  .city-name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.08;
+  }
+
+  .city-time {
+    min-width: 0;
+  }
+
+  .time-main {
+    font-size: 23px;
+    font-weight: 600;
+  }
+
+  .time-period {
+    font-size: 15px;
+    font-weight: 700;
   }
 }

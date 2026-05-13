@@ -191,11 +191,9 @@ function renderGrid(now) {
           <span class="window-ledges"></span>
         </span>
         <span class="window-label">
-          <span>
-            <strong>${city.city}</strong>
-            <span>${getDateWord(cityTime, localTime)}, ${city.offsetLabel}</span>
-          </span>
+          <strong>${city.city}</strong>
           <time>${cityTime.main}${cityTime.period}</time>
+          <span class="window-date">${getDateWord(cityTime, localTime)}, ${city.offsetLabel}</span>
           <span class="open-note">${timeOfDay.label}</span>
         </span>
       </button>
